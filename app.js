@@ -6,6 +6,7 @@ const port = '8080';
 // ejs Embedded JavaScript Template
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/views');
+app.use(express.static('src'));
 
 app.get('/', (req, res) => {
     res.render('index.html');
