@@ -23,6 +23,17 @@ elXhrgetBtn.addEventListener('click', () => {
         }
     };
 
+    xhr.onload = () => {
+        // onload는 readyState DONE 상태에서 호출
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) { // 200 : 정상적으로 응답이 처리
+                console.log(xhr.responseText);
+            } else {
+                console.log(xhr.responseText);
+            }
+        }
+    };
+
     xhr.open('GET', `http://localhost:8080/get/cats?name=${name}`);
     xhr.send();
 });
