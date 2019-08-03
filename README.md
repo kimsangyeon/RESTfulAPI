@@ -42,3 +42,29 @@ REST는 Resource와 Verbs 자원과 전달로 구성된 형태라고 할 수 있
 
 <br><br>
  
+### RESTful
+REST를 정의하는 방식은 따로 가이드라인이 없다고 합니다. RESTful은 REST를 정의하는 비공식적 가이드라고 합니다. 반드시 지켜야 하는 것은 아니지만 여러 의견들을 모아 효율적으로 정의하기위해 만들었다고 합니다. <br>
+
+<br>
+
+RESTful 정의는 명사 복수형을 사용하는 형태로 사용하며 id는 특정 자원을 나타내는 고유 값으로 사용합니다. <br>
+- GET : /resource
+- GET : /resource/id
+- POST : /resource
+- PUT : /resource/id
+- DELETE : /resource/id
+
+<br>
+
+RESTful은 REST를 정의하는 하나의 수단이지 이를 사용하지 않는다고 해서 틀린 것은 아닙니다. GET은 조회, POST는 생성, PUT은 수정, DELETE는 삭제의 용도로 사용합니다.<br>
+간단한 예로 이미지를 조회한다고 했을때
+
+- RESTful : [GET] /images/id
+- 비 RESTful : [POST] /getImages
+
+<br>
+
+비 RESTful의 경우 조회하는 동작에서 POST를 사용하여 이미지를 가져오는 방식을 사용할 수 있습니다. <br>
+
+<br>
+
