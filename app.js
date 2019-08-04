@@ -46,6 +46,15 @@ app.post('/post/json', (req, res) => {
     res.end('cats!');
 });
 
+app.post('/post/formData', (req, res) => {
+    const name = req.body.name;
+    const birth = req.body.birth;
+    console.log(name);
+    console.log(birth);
+
+    res.end('cats!');
+});
+
 app.listen(port, (err) => {
     console.log('connect : ', port);
 
