@@ -1,5 +1,7 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const upload = multer();
 const app = express();
 const port = '8080';
 
@@ -7,6 +9,14 @@ const port = '8080';
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/views');
 app.use(express.static('src'));
+
+// body-parser : request body encoding, application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended:false}));
+// parsing application/json
+app.use(bodyParser.json());
+
+// parsing multipart/form-data
+app.use(upload.array());
 
 app.get('/', (req, res) => {
     res.render('index.html');
@@ -29,6 +39,20 @@ app.get('/get/cats', (req, res) => {
     } else {
         res.end('cats!');
     }
+});
+
+app.post('/post/json', (req, res) => {
+    console.log(req.body);
+    res.end('cats!');
+});
+
+app.post('/post/formData', (req, res) => {
+    const name = req.body.name;
+    const birth = req.body.birth;
+    console.log(name);
+    console.log(birth);
+
+    res.end('cats!');
 });
 
 app.listen(port, (err) => {

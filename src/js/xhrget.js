@@ -1,5 +1,5 @@
 
-const elXhrgetBtn = document.getElementById('xhrgetBtn');
+const elXhrgetBtn = document.getElementById('xhrGetBtn');
 const name = 'sanji';
 elXhrgetBtn.addEventListener('click', () => {
     const xhr = new XMLHttpRequest();
