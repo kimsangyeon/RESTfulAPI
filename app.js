@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = '8080';
@@ -7,6 +8,10 @@ const port = '8080';
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/views');
 app.use(express.static('src'));
+
+// body-parser : request body encoding
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.render('index.html');
@@ -29,6 +34,11 @@ app.get('/get/cats', (req, res) => {
     } else {
         res.end('cats!');
     }
+});
+
+app.post('/post/json', (req, res) => {
+    console.log(req.body);
+    res.end('cats!');
 });
 
 app.listen(port, (err) => {
