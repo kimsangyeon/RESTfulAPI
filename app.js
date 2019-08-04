@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const multer = require('multer');
+const upload = multer();
 const app = express();
 const port = '8080';
 
@@ -9,9 +10,13 @@ app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '/views');
 app.use(express.static('src'));
 
-// body-parser : request body encoding
-app.use(bodyParser.urlencoded({extended:true}));
+// body-parser : request body encoding, application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended:false}));
+// parsing application/json
 app.use(bodyParser.json());
+
+// parsing multipart/form-data
+app.use(upload.array());
 
 app.get('/', (req, res) => {
     res.render('index.html');
