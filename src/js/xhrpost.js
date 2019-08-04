@@ -19,3 +19,23 @@ elXhrPostJsonBtn.addEventListener('click', () => {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(jsonData));
 });
+
+const elXhrFormDataBtn = document.getElementById('xhrPostFormDataBtn');
+elXhrFormDataBtn.addEventListener('click', () => {
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+
+    formData.append('name', 'sanji');
+    formData.append('birth', 2019);
+
+    xhr.onload = () => {
+        if (xhr.status === 200 || xhr.status === 201) {
+            console.log(xhr.responseText);
+        } else {
+            console.log(xhr.responseText);
+        }
+    };
+
+    xhr.open('POST', `http://localhost:8080/post/formData`);
+    xhr.send(formData); // formData 보내기시 Content-Type multipart/form-data로 전송
+});
